@@ -6,4 +6,4 @@ RUN npm install
 WORKDIR /usr/src/app
 COPY . .
 EXPOSE 8086
-CMD ["npm","start"]
+CMD ["node","server.js"]
