@@ -1,5 +1,5 @@
 FROM node:latest
-RUN npm install package*.json
+COPY package*.json ./
 WORKDIR /usr/src/app
 COPY . .
 EXPOSE 8086
