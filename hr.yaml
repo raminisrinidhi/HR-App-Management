@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -12,16 +13,16 @@ spec:
       labels:
         app: hr-app
       annotations:
-        ad.datadoghq.com/fitness-tracker-app.logs: '[{"source":"nodejs","service":"hr-application-service"},{"source":"nodejs","service":","service":"hr-application-service""}]'
+        ad.datadoghq.com/hr-application-app.logs: '[{"source":"nodejs","service":"hr-application-service"}]'
     spec:
       containers:
       - name: hr-application-app
         image: raminisrinidhi/hr-aplication-1:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 5000
         env:
         - name: MONGODB_URI
-          value: "mongodb://rootuser:rootpassword@localhost:27017/hr_system?authSource=rootuser"
+          value: "mongodb://rootuser:rootpassword@mongodb-service:27017/hr_system?authSource=admin"
         - name: PORT
           value: "5000"
         - name: HOST
@@ -51,6 +52,6 @@ spec:
   selector:
     app: hr-app
   ports:
-  - port: 3000
-    targetPort: 3000
+  - port: 80
+    targetPort: 5000
   type: LoadBalancer
