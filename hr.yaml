@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hr-application-app
+  name: hr-app
 spec:
   replicas: 2
   selector:
@@ -39,7 +39,7 @@ spec:
         - name: DD_ENV
           value: "production"
         - name: DD_SERVICE
-          value: "fitness-tracker-app"
+          value: "hr-app"
         - name: DD_VERSION
           value: "1.0.0"
 ---
